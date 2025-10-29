@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import DarkLight from "@/components/ui/darkLight";
@@ -8,6 +9,7 @@ import { usePathname } from "next/navigation";
 
 export function Header() {
   const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   const nav = [
     { href: "/about", label: "About us" },
@@ -23,11 +25,33 @@ export function Header() {
     return pathname === href || pathname.startsWith(href + "/");
   };
 
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (open) {
+      const { overflow } = document.body.style;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = overflow;
+      };
+    }
+  }, [open]);
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false);
+    };
+    if (open) window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [open]);
+
   return (
-    <header className="sticky top-0 left-0 right-0 z-50 bg-foreground">
-      <div className="container mx-auto px-4 py-4">
+    <header className="sticky top-0 left-0 right-0 z-50 bg-foreground w-full">
+      <div className="mx-auto px-4 py-4 hidden lg:flex">
         <nav className="flex items-center justify-between mx-5">
-          <div className="flex flex-row gap-5 mx-5">
+          <div className="flex flex-row gap-5 mx-auto lg:mx-5">
             <Image src="/SmallLogo.png" alt="Logo de FoxCoding" width={50} height={50} />
             <Link href="/" className="flex items-center gap-2 text-accent font-bold text-lg">
               <span className={firaCode.className}>CETYS FoxCoding Club</span>
@@ -55,6 +79,9 @@ export function Header() {
             </li>
           </ul>
         </nav>
+      </div>
+      <div className='px-4 py-4 flex lg:hidden'>
+            
       </div>
     </header>
   );
