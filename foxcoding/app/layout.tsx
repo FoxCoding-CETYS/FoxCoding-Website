@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Inter } from 'next/font/google'
-import { Header } from "@/components/layout/header";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 
@@ -23,7 +22,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="light">
-          <Header />
           {children}
         </ThemeProvider>
       </body>
