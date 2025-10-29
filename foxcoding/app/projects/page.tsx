@@ -1,4 +1,4 @@
-export default function Sponsors() {
+export default function Projects() {
     return (
         <>
         </>

@@ -1,12 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from 'next/font/google'
+import { inter } from '@/app/fonts';
+import { Header } from "@/components/layout/header";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
 
-const inter = Inter({
-  display: "swap",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "FoxCoding",
@@ -22,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="light">
+          <Header />
           {children}
         </ThemeProvider>
       </body>
