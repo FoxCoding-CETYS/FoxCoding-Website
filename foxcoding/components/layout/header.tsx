@@ -27,7 +27,7 @@ export function Header() {
     <header className="sticky top-0 left-0 right-0 z-50 bg-foreground">
       <div className="container mx-auto px-4 py-4">
         <nav className="flex items-center justify-between mx-5">
-          <div className="flex flex-row gap-5">
+          <div className="flex flex-row gap-5 mx-5">
             <Image src="/SmallLogo.png" alt="Logo de FoxCoding" width={50} height={50} />
             <Link href="/" className="flex items-center gap-2 text-accent font-bold text-lg">
               <span className={firaCode.className}>CETYS FoxCoding Club</span>
