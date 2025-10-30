@@ -6,6 +6,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-button: var(--button);
+  --color-button-text: var(--button-text);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -54,10 +55,11 @@
   --popover-foreground: oklch(0.145 0 0);
   --primary: #2C2E36;
   --secondary: #ffffff;
+  --button-text: var(--background);
   --accent: #F7D13B;
   --button: #2C2E36;
   --primary-foreground: oklch(0.985 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  --secondary-foreground: var(--foreground);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent-foreground: oklch(0.205 0 0);
@@ -89,9 +91,10 @@
   --popover-foreground: oklch(0.985 0 0);
   --primary: #ffffff;
   --button: #F7D13B;
+  --button-text: var(--accent);
   --primary-foreground: oklch(0.205 0 0);
   --secondary: #ffffff;
-  --secondary-foreground: oklch(0.985 0 0);
+  --secondary-foreground: #0000;
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: #F7D13B;

@@ -3,7 +3,7 @@ import { inter } from '@/app/fonts';
 import { Header } from "@/components/layout/header";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-
+import Footer from "@/components/layout/footer";
 
 export const metadata: Metadata = {
   title: "FoxCoding",
@@ -21,6 +21,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="light">
           <Header />
           {children}
+          <Footer/>
         </ThemeProvider>
       </body>
     </html>

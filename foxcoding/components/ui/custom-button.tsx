@@ -5,9 +5,9 @@ import type React from "react"
 import { Button } from "./button"
 
 const buttonColorClasses = {
-    primary: "bg-button hover:bg-primary-hover text-background",
-    secondary: "bg-gray-800 hover:bg-gray-900 text-white",
-    outline: "border-green-400 text-green-600 hover:bg-green-200 bg-transparent",
+    primary: "bgbg-button text-background hover:bg-button/90",
+    secondary: "bg-foreground text-button-text hover:bg-foreground/80",
+    outline: "text-foreground bg-accent hover:bg-accent/80",
     cta: "bg-black hover:bg-gray-800 text-white",
 }
 
@@ -20,9 +20,9 @@ interface CustomButtonProps {
 }
 
 const sizeClasses = {
-  sm: "px-4 py-2 text-[20px]",
-  md: "px-6 sm:px-8 py-2 sm:py-3",
-  lg: "px-8 sm:px-12 py-2 sm:py-3 text-base sm:text-lg",
+  sm: "px-4 py-2 text-xl md:text-2xl",
+  md: "px-6 sm:px-8 py-2 sm:py-3 text-md md:text-base font-bold",
+  lg: "px-8 sm:px-12 py-2 sm:py-3 text-xl md:text-2xl",
 }
 
 export function CustomButton({
