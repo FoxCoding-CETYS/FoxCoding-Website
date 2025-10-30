@@ -1,7 +1,5 @@
-// app/components/SponsorCTA.tsx
 "use client";
 
-import Link from "next/link";
 import { textClasses } from "@/app/fonts";
 import { CustomButton } from "../ui/custom-button";
 

@@ -67,6 +67,7 @@ export function PreviousEvents() {
   // Swipe (for touch)
   const touchStartX = useRef<number | null>(null);
   const touchDeltaX = useRef(0);
+
   const onTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
     touchDeltaX.current = 0;
@@ -80,18 +81,29 @@ export function PreviousEvents() {
     touchStartX.current = null;
     touchDeltaX.current = 0;
     if (Math.abs(d) < 40) return;
-    d > 0 ? prev() : next();
+
+    // ✅ no-unused-expressions fix
+    if (d > 0) {
+      prev();
+    } else {
+      next();
+    }
   };
 
   // Keyboard arrows
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "ArrowLeft") prev();
-      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") {
+        // ✅ avoid prev/next in deps; use functional update
+        setIdx(i => (i - 1 + len) % len);
+      }
+      if (e.key === "ArrowRight") {
+        setIdx(i => (i + 1) % len);
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, []);
+  }, [len]); // ✅ satisfies react-hooks/exhaustive-deps
 
   const iPrev = mod(idx - 1);
   const iCurr = idx;

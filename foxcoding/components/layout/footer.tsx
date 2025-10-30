@@ -1,9 +1,7 @@
-// app/components/Footer.tsx
 "use client";
 
 import Link from "next/link";
 import { Github, Instagram } from "lucide-react";
-import { textClasses } from "@/app/fonts";
 
 export default function Footer() {
   const year = new Date().getFullYear();
