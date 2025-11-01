@@ -35,7 +35,7 @@ export default function Footer() {
           <div className="flex md:justify-end gap-4">
             <Link
               aria-label="Instagram"
-              href="https://instagram.com/foxcoding"  // <- replace with your handle
+              href="https://www.instagram.com/foxcoding.cpp?igsh=MTZxcjZwMXE5M2lrMQ=="
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-700 hover:border-neutral-500 hover:bg-neutral-800 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
             >
               <Instagram className="h-5 w-5" />
@@ -43,7 +43,7 @@ export default function Footer() {
 
             <Link
               aria-label="GitHub"
-              href="https://github.com/foxcoding"    // <- replace with your org
+              href="https://github.com/FoxCoding-CETYS"    // <- replace with your org
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-neutral-700 hover:border-neutral-500 hover:bg-neutral-800 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-neutral-500"
             >
               <Github className="h-5 w-5" />
