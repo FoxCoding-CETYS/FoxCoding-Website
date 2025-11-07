@@ -5,7 +5,7 @@ export function HeroSection(props: { first_word: string; second_word?: string;})
 
   return (
     <div className="relative w-full h-[60vh]">
-        <Image src={ceidImg} alt="Imágen del CEID" fill className="object-cover brightness-30" priority/>
+        <Image src={ceidImg} alt="Imágen del CEID" fill className="object-cover brightness-30 object-left md:object-center" priority/>
 
         <div className="flex h-full w-full items-center">
             <h1 className="relative z-10 text-white text-4xl md:text-6xl font-bold m-24">
