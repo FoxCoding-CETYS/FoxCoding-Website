@@ -4,6 +4,24 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
+  /* Sponsor Tiers Colors */
+  /* BRONZE */
+  --color-bronze: var(--bronze);
+  --color-bronze-button: var(--bronze-button);
+  --color-bronze-card: var(--bronze-card);
+  /* SILVER */
+  --color-silver: var(--silver);
+  --color-silver-button: var(--silver-button);
+  --color-silver-card: var(--silver-card);
+  /* GOLD */
+  --color-gold: var(--gold);
+  --color-gold-button: var(--gold-button);
+  --color-gold-card: var(--gold-card);
+  /* TECH PARTNER */
+  --color-techpartner: var(--techpartner);
+  --color-techpartner-button: var(--techpartner-button);
+  --color-techpartner-card: var(--techpartner-card);
+  /**/
   --color-background: var(--background);
   --color-button: var(--button);
   --color-button-text: var(--button-text);
@@ -80,6 +98,23 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /* Sponsor Tiers Colors */
+  /* BRONZE */
+  --bronze: #CD7F32;
+  --bronze-button: var(--bronze);
+  --bronze-card: #ecbc79 ;
+  /* SILVER */
+  --silver: #919191;
+  --silver-button: var(--silver);
+  --silver-card: #cbcbcb;
+  /* GOLD */
+  --gold: #DBAF00;
+  --gold-button: var(--gold);
+  --gold-card: #f9dc68;
+  /* TECH PARTNER */
+  --techpartner: #8989FA;
+  --techpartner-button: var(--techpartner);
+  --techpartner-card: #ccccfc;
 }
 
 .dark {
@@ -116,6 +151,23 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  /* Sponsor Tiers Colors */
+  /* BRONZE */
+  --bronze: #CD7F32;
+  --bronze-button: var(--foreground);
+  --bronze-card: var(--foreground);
+  /* SILVER */
+  --silver: #919191;
+  --silver-button: var(--foreground);
+  --silver-card: var(--foreground);
+  /* GOLD */
+  --gold: #DBAF00;
+  --gold-button: var(--foreground);
+  --gold-card: var(--foreground);
+  /* TECH PARTNER */
+  --techpartner: #8989FA;
+  --techpartner-button: var(--foreground);
+  --techpartner-card: var(--foreground);
 }
 
 @layer base {

@@ -14,7 +14,9 @@ export const firaCode = Fira_Code({
 
 export const textClasses = {
   title: "text-accent font-black text-3xl md:text-4xl text-center",
-  secondary: "bg-gray-800 hover:bg-gray-900 text-white",
+  subtitle: "text-2xl md:text-3xl",
+  subtitle2: "text-xl md:text-2xl font-black",
+  paragraph: "text-lg md:text-2xl leading-6",
   outline: "border-green-400 text-green-600 hover:bg-green-200 bg-transparent",
   cta: "bg-black hover:bg-gray-800 text-white",
 };
