@@ -8,14 +8,8 @@ export default function Sponsors() {
       <HeroSection first_word="Sponsorship" />
       <SponsorCTA
         Title="Dear Sponsor"
-        Accent={["FoxCoding", "you will be contributing to"]}
-        Body=" is a student team at CETYS University dedicated to fostering innovation and developing technological skills through hackathon participation. By supporting us,"
-        BulletPoints={[
-          "Shaping the next generation of software developers.",
-          "Solving real-world problems through technology.",
-          "Promoting collaboration between students and businesses.",
-          "Positioning CETYS University as a leader in the technology field.",
-        ]}
+        Accent={["To sponsor us you can ", ""]}
+        Body=" contact us through our email or donating directly to our teams leader paypal. By becoming a sponsor of FoxCoding, you are helping build the future and helping us achieve our dreams to reach even higher. By supporting us, you will also get the following benefits"
       />
       <div className="mt-10">
         <SponsorTiers />
