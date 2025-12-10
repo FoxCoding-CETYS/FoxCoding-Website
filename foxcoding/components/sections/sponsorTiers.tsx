@@ -19,9 +19,9 @@ export function SponsorTiers() {
             variant="bronze"
             range="$500 - $1,999"
             description={[
-              "Agradecimiento público en nuestras redes sociales.",
-              "Certificado digital como 'Colaborador de FoxCoding'.",
-              "Entrega de reconocimiento.",
+              "Public thanks on our social media.",
+              "Digital certificate as a 'FoxCoding Contributor'.",
+              "Award ceremony.",
             ]}
           />
         </div>
@@ -31,10 +31,10 @@ export function SponsorTiers() {
             variant="silver"
             range="$2,000 - $4,999"
             description={[
-              "Todo lo del tier Bronze",
-              "Logotipo en camisetas de competencia.",
-              "Oportunidades para colaboración.",
-              "Mención en artículos VOCETYS.",
+              "Everything from the Bronze tier",
+              "Logo on competition t-shirts.",
+              "Opportunities for collaboration.",
+              "Mention in VOCETYS articles.",
             ]}
           />
         </div>
@@ -44,9 +44,9 @@ export function SponsorTiers() {
             variant="gold"
             range="$5,000 - $9,999"
             description={[
-              "Todo lo del tier Plata",
-              "Acceso preferente a vinculación con talento FoxCoding.",
-              "Oportunidad de ofrecer una charla técnica.",
+              "Everything from the Silver tier",
+              "Preferential access to FoxCoding talent placement.",
+              "Opportunity to give a technical talk.",
             ]}
           />
         </div>
@@ -63,9 +63,9 @@ export function SponsorTiers() {
               variant="platinum"
               range="$10,000+"
               description={[
-                "Todo lo del tier Oro",
-                "Mención en competencias organizadas por el equipo.",
-                "Logo en lugar preferente en todo material oficial.",
+                "Everything in the Gold tier",
+                "Mention in competitions organized by the team.",
+                "Logo in a prominent place on all official material.",
               ]}
             />
           </ElectricBorder>
@@ -76,9 +76,9 @@ export function SponsorTiers() {
             variant="techpartner"
             range="(Software / Licences)"
             description={[
-              "Logo en la sección 'Aliados Tecnológicos' del sitio web.",
-              "Mención especial en talleres donde se use su herramienta.",
-              "Certificado digital como 'Colaborador de FoxCoding'.",
+              "Logo in the 'Technology Partners' section of the website.",
+              "Special mention in workshops where their tool is used.",
+              "Digital certificate as a 'FoxCoding Contributor'.",
             ]}
           />
         </div>
