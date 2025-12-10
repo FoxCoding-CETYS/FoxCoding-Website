@@ -157,20 +157,37 @@ export function Header() {
           <ul className="space-y-2 text-lg">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={[
-                    "block rounded-md px-2 py-2 transition-colors",
-                    !isActive(item.href) &&
-                      "text-secondary hover:bg-accent/10 hover:text-accent",
-                    isActive(item.href) &&
-                      "bg-accent/10 text-accent font-semibold",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                >
-                  {item.label}
-                </Link>
+                {item.label === "Contact" ? (
+                  <Link
+                    href="mailto:foxcoding@cetys.edu.mx"
+                    className={[
+                      "block rounded-md px-2 py-2 transition-colors",
+                      !isActive(item.href) &&
+                        "text-secondary hover:bg-accent/10 hover:text-accent",
+                      isActive(item.href) &&
+                        "bg-accent/10 text-accent font-semibold",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={[
+                      "block rounded-md px-2 py-2 transition-colors",
+                      !isActive(item.href) &&
+                        "text-secondary hover:bg-accent/10 hover:text-accent",
+                      isActive(item.href) &&
+                        "bg-accent/10 text-accent font-semibold",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
