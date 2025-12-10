@@ -14,8 +14,8 @@ export function SponsorCTA(props: {
   let i = 0;
   const nextAccent = () => accents[i++] ?? "";
   return (
-    <section className="w-full bg-secondary-foreground text-white">
-      <div className="mx-auto w-4/5 px-6 py-16 text-left text-xl md:text-3xl">
+    <section className="w-full bg-secondary-primary text-primary">
+      <div className="mx-auto w-4/5 px-6 py-16 text-center text-xl md:text-3xl">
         <h2 className={`${textClasses.title} leading-tight`}>
           {props.Title}{" "}
           {props.Title2 && (
@@ -34,15 +34,6 @@ export function SponsorCTA(props: {
             <li key={idx}>{point}</li>
           ))}
         </ul>
-      </div>
-      <div className="mb-10 flex justify-center">
-        <CustomButton
-          variant="outline"
-          className="mx-auto"
-          onClick={() => window.open("https://www.paypal.me/AnahiHulll")}
-        >
-          Sponsor Us
-        </CustomButton>
       </div>
     </section>
   );

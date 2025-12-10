@@ -134,13 +134,13 @@ export function FeaturedProjects() {
           </div>
         </div>
       </div>
-      <CustomButton
+      {/* <CustomButton
         variant="secondary"
         size="lg"
         className="w-1/2 md:w-1/3 mx-auto my-auto"
       >
         Learn More
-      </CustomButton>
+      </CustomButton> */}
     </div>
   );
 }

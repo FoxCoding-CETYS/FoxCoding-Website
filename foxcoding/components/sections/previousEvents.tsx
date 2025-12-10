@@ -131,7 +131,7 @@ export function PreviousEvents() {
 
   return (
     <div className="flex flex-col mx-auto gap-10 md:gap-20 px-6 w-full md:w-7/8">
-      <h1 className={`${textClasses.title} mb:4 md:mb-8`}>PREVIOUS EVENTS</h1>
+      <h1 className={`${textClasses.title} mb:4`}>PREVIOUS EVENTS</h1>
 
       {/* DESKTOP: prev | current | next + arrows + dots */}
       <div
@@ -255,13 +255,13 @@ export function PreviousEvents() {
         </div>
       </div>
 
-      <CustomButton
+      {/* <CustomButton
         variant="secondary"
         size="lg"
         className="mx-auto mt-3 md:my-8 w-1/2 md:w-1/3"
       >
         Learn More
-      </CustomButton>
+      </CustomButton> */}
     </div>
   );
 }
