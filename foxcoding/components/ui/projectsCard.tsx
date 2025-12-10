@@ -5,10 +5,11 @@ import Link from "next/link";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Github, ExternalLink } from "lucide-react";
+import { textClasses } from "@/app/fonts";
 
 type Props = {
   title: string;
-  status?: string; 
+  status?: string;
   imageSrc: string;
   imageAlt?: string;
   description: string;
@@ -39,7 +40,7 @@ export function ProjectCard({
       </div>
 
       <div className="mt-4 flex items-center justify-between">
-        <h3 className="text-2xl md:text-3xl font-bold text-white">{title}</h3>
+        <h3 className={`${textClasses.subtitle} text-white`}>{title}</h3>
         <Badge
           className="rounded-full bg-accent px-3 py-1 text-lg font-bold text-black hover:bg-accent"
           variant="secondary"

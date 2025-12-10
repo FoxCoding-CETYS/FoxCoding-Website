@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { EventCard } from "../ui/eventsCard";
 import { textClasses } from "@/app/fonts";
-import { CustomButton } from "../ui/custom-button";
 
 type Item = {
   title: string;
@@ -54,7 +53,6 @@ const items: Item[] = [
   },
 ];
 
-
 export function PreviousEvents() {
   const [idx, setIdx] = useState(0);
   const len = items.length;
@@ -82,7 +80,6 @@ export function PreviousEvents() {
     touchDeltaX.current = 0;
     if (Math.abs(d) < 40) return;
 
-    // ✅ no-unused-expressions fix
     if (d > 0) {
       prev();
     } else {
@@ -95,10 +92,10 @@ export function PreviousEvents() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "ArrowLeft") {
         // ✅ avoid prev/next in deps; use functional update
-        setIdx(i => (i - 1 + len) % len);
+        setIdx((i) => (i - 1 + len) % len);
       }
       if (e.key === "ArrowRight") {
-        setIdx(i => (i + 1) % len);
+        setIdx((i) => (i + 1) % len);
       }
     };
     window.addEventListener("keydown", onKey);
@@ -121,7 +118,9 @@ export function PreviousEvents() {
       <div
         className={[
           "h-full rounded-3xl transition-all duration-300 ease-out",
-          isCurrent ? "opacity-100 scale-100 shadow-xl" : "opacity-60 scale-95 shadow",
+          isCurrent
+            ? "opacity-100 scale-100 shadow-xl"
+            : "opacity-60 scale-95 shadow",
         ].join(" ")}
       >
         <EventCard {...item} />
@@ -131,7 +130,7 @@ export function PreviousEvents() {
 
   return (
     <div className="flex flex-col mx-auto gap-10 md:gap-20 px-6 w-full md:w-7/8">
-      <h1 className={`${textClasses.title} mb:4 md:mb-8`}>PREVIOUS EVENTS</h1>
+      <h1 className={`${textClasses.title} mb:4`}>PREVIOUS EVENTS</h1>
 
       {/* DESKTOP: prev | current | next + arrows + dots */}
       <div
@@ -186,7 +185,9 @@ export function PreviousEvents() {
               onClick={() => goTo(i)}
               className={[
                 "h-2 w-2 rounded-full transition-colors",
-                i === idx ? "bg-accent" : "bg-muted-foreground/40 hover:bg-muted-foreground/60",
+                i === idx
+                  ? "bg-accent"
+                  : "bg-muted-foreground/40 hover:bg-muted-foreground/60",
               ].join(" ")}
             />
           ))}
@@ -214,45 +215,52 @@ export function PreviousEvents() {
               </div>
             ))}
           </div>
+          <div className="flex">
+            {/* Arrows */}
+            <button
+              type="button"
+              onClick={prev}
+              aria-label="Previous event"
+              className="relative left-0 bottom-5 -translate-y-1/2 rounded-xl border border-border text-button bg-background p-2 hover:bg-accent/10"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <button
+              type="button"
+              onClick={next}
+              aria-label="Next event"
+              className="relative left-4/5 bottom-5 -translate-y-1/2 rounded-xl border border-border text-button bg-background/80 p-2 backdrop-blur hover:bg-accent/10"
+            >
+              <ChevronRight className="h-5 w-5" />
+            </button>
 
-          {/* Arrows */}
-          <button
-            type="button"
-            onClick={prev}
-            aria-label="Previous event"
-            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-xl border border-border text-button bg-background p-2 hover:bg-accent/10"
-          >
-            <ChevronLeft className="h-5 w-5" />
-          </button>
-          <button
-            type="button"
-            onClick={next}
-            aria-label="Next event"
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-xl border border-border text-button bg-background/80 p-2 backdrop-blur hover:bg-accent/10"
-          >
-            <ChevronRight className="h-5 w-5" />
-          </button>
-
-          {/* Dots */}
-          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-            {items.map((_, i) => (
-              <button
-                key={i}
-                aria-label={`Go to slide ${i + 1}`}
-                onClick={() => goTo(i)}
-                className={[
-                  "h-2 w-2 rounded-full transition-colors",
-                  i === idx ? "bg-accent" : "bg-muted-foreground/40 hover:bg-muted-foreground/60",
-                ].join(" ")}
-              />
-            ))}
+            {/* Dots */}
+            <div className="relative bottom-4 mx-auto -translate-x-2/3 flex gap-2">
+              {items.map((_, i) => (
+                <button
+                  key={i}
+                  aria-label={`Go to slide ${i + 1}`}
+                  onClick={() => goTo(i)}
+                  className={[
+                    "h-2 w-2 rounded-full transition-colors",
+                    i === idx
+                      ? "bg-accent"
+                      : "bg-muted-foreground/40 hover:bg-muted-foreground/60",
+                  ].join(" ")}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      <CustomButton variant="secondary" size="lg" className="mx-auto mt-3 md:my-8 w-1/2 md:w-1/3">
+      {/* <CustomButton
+        variant="secondary"
+        size="lg"
+        className="mx-auto mt-3 md:my-8 w-1/2 md:w-1/3"
+      >
         Learn More
-      </CustomButton>
+      </CustomButton> */}
     </div>
   );
 }
