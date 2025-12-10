@@ -5,7 +5,7 @@ import { SponsorTiers } from "@/components/sections/sponsorTiers";
 
 export default function Sponsors() {
   return (
-    <div className="flex flex-col gap-2 md:gap-6 w-full overflow-hidden">
+    <div className="flex flex-col gap-1 w-full overflow-hidden">
       <HeroSection first_word="Sponsorship" />
       <SponsorCTA
         Title="Dear Sponsor"
@@ -18,7 +18,9 @@ export default function Sponsors() {
           "Positioning CETYS University as a leader in the technology field.",
         ]}
       />
-      <SponsorTiers />
+      <div className="mt-10">
+        <SponsorTiers />
+      </div>
     </div>
   );
 }

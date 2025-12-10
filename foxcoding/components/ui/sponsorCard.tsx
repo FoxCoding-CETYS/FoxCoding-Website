@@ -13,6 +13,15 @@ const sponsorCardColorClasses = {
   techpartner: "bg-techpartner-card border border-techpartner text-white",
 };
 
+// Add this mapping for the title colors
+const sponsorTitleColorClasses = {
+  bronze: "text-bronze",
+  silver: "text-silver",
+  gold: "text-gold",
+  platinum: "text-platinum",
+  techpartner: "text-techpartner",
+};
+
 interface CustomCardProps {
   title: string;
   range: string;
@@ -36,7 +45,7 @@ export function SponsorsCard(props: CustomCardProps) {
       className={`${sponsorCardColorClasses[variant]} w-full h-full rounded-4xl ${className}`}
     >
       <div className="flex mx-auto">
-        <h2 className={`${textClasses.title} mt-4 font-black text-${variant}`}>
+        <h2 className={`${textClasses.title} mt-4 font-black ${sponsorTitleColorClasses[variant]}`}>
           {title}
         </h2>
       </div>
@@ -45,11 +54,7 @@ export function SponsorsCard(props: CustomCardProps) {
       >
         <h3>{range}</h3>
       </div>
-      <div className="mx-auto">
-        <CustomButton variant={variant} size="md" className="mx-auto">
-          GET STARTED
-        </CustomButton>
-      </div>
+
       <div className="mx-auto">
         <ul className="mx-auto text-md md:text-lg w-8/12 leading-6 font-medium text-primary list-disc">
           {description.map((item, idx) => (

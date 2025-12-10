@@ -17,6 +17,10 @@
   --color-gold: var(--gold);
   --color-gold-button: var(--gold-button);
   --color-gold-card: var(--gold-card);
+  /* PLATINUM */
+  --color-platinum: var(--platinum);
+  --color-platinum-button: var(--platinum-button);
+  --color-platinum-card: var(--platinum-card);
   /* TECH PARTNER */
   --color-techpartner: var(--techpartner);
   --color-techpartner-button: var(--techpartner-button);
@@ -102,19 +106,23 @@
   /* BRONZE */
   --bronze: #CD7F32;
   --bronze-button: var(--bronze);
-  --bronze-card: #ecbc79 ;
+  --bronze-card: var(--background);
   /* SILVER */
   --silver: #919191;
   --silver-button: var(--silver);
-  --silver-card: #cbcbcb;
+  --silver-card: var(--background);
   /* GOLD */
   --gold: #DBAF00;
   --gold-button: var(--gold);
-  --gold-card: #f9dc68;
+  --gold-card: var(--background);
+  /* PLATINUM */
+  --platinum: #7c7c7b;
+  --platinum-button: var(--platinum);
+  --platinum-card: var(--background);
   /* TECH PARTNER */
   --techpartner: #8989FA;
   --techpartner-button: var(--techpartner);
-  --techpartner-card: #ccccfc;
+  --techpartner-card: var(--background);
 }
 
 .dark {
@@ -164,6 +172,10 @@
   --gold: #DBAF00;
   --gold-button: var(--foreground);
   --gold-card: var(--foreground);
+  /* PLATINUM */
+  --platinum: #E5E4E2;
+  --platinum-button: var(--foreground);
+  --platinum-card: var(--foreground);
   /* TECH PARTNER */
   --techpartner: #8989FA;
   --techpartner-button: var(--foreground);
