@@ -1,7 +1,6 @@
 "use client";
 
 import { textClasses } from "@/app/fonts";
-import { CustomButton } from "../ui/custom-button";
 
 export function SponsorCTA(props: {
   Title: string;

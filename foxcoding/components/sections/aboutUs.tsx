@@ -1,5 +1,3 @@
-import { CustomButton } from "../ui/custom-button";
-
 export function AboutUs() {
   return (
     <div className="flex flex-col text-primary text-center text-xl md:text-4xl w-2/3 font-normal mx-auto gap-10">

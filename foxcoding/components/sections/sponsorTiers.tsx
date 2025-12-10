@@ -1,62 +1,6 @@
 import { textClasses } from "@/app/fonts";
 import { SponsorsCard } from "../ui/sponsorCard";
 import ElectricBorder from "../ui/electricBorder";
-import SpotlightCard from "../ui/spotlightCard";
-
-const tier = [
-  {
-    title: "BRONZE",
-    variant: "bronze",
-    range: "$500 - $1,999",
-    description: [
-      "Agradecimiento público en nuestras redes sociales.",
-      "Certificado digital como 'Colaborador de FoxCoding'.",
-      "Entrega de reconocimiento.",
-    ],
-  },
-  {
-    title: "SILVER",
-    variant: "silver",
-    range: "$2,000- $4,999",
-    description: [
-      "Todo lo del tier Bronze",
-      "Logotipo en camisetas de competencia.",
-      "Oportunidades para colaboración.",
-      "Mención en artículos VOCETYS.",
-    ],
-  },
-  {
-    title: "GOLD",
-    variant: "gold",
-    range: "$5,000- $9,999",
-    description: [
-      "Todo lo del tier Plata",
-      "Acceso preferente a vinculación con talento FoxCoding.",
-      "Oportunidad de ofrecer una charla técnica.",
-    ],
-  },
-  {
-    id: "platinum",
-    title: "PLATINUM",
-    variant: "platinum",
-    range: "$10,000+",
-    description: [
-      "Todo lo del tier Oro",
-      "Mención en competencias organizadas por el equipo.",
-      "Logo en lugar preferente en todo material oficial.",
-    ],
-  },
-  {
-    title: "TECH PARTNER",
-    variant: "techpartner",
-    range: "(Software / licencias)",
-    description: [
-      "Logo en la sección 'Aliados Tecnológicos' del sitio web.",
-      "Mención especial en talleres donde se use su herramienta.",
-      "Certificado digital como 'Colaborador de FoxCoding'.",
-    ],
-  },
-];
 
 export function SponsorTiers() {
   return (

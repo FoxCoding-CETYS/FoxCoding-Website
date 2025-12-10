@@ -4,7 +4,6 @@ import { useRef, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { EventCard } from "../ui/eventsCard";
 import { textClasses } from "@/app/fonts";
-import { CustomButton } from "../ui/custom-button";
 
 type Item = {
   title: string;

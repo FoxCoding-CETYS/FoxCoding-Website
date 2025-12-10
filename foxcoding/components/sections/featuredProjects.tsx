@@ -3,7 +3,6 @@
 import { useState, useRef } from "react";
 import { textClasses } from "@/app/fonts";
 import { ProjectCard } from "@/components/ui/projectsCard";
-import { CustomButton } from "@/components/ui/custom-button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 type Item = {

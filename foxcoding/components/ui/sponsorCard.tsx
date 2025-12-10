@@ -1,8 +1,6 @@
 "use client";
 
-import Image from "next/image";
 import { Card } from "@/components/ui/card";
-import { CustomButton } from "./custom-button";
 import { textClasses } from "@/app/fonts";
 
 const sponsorCardColorClasses = {
@@ -27,7 +25,6 @@ interface CustomCardProps {
   range: string;
   description: string[];
   variant?: "bronze" | "silver" | "gold" | "platinum" | "techpartner";
-  size?: "sm" | "md" | "lg";
   className?: string;
 }
 
@@ -37,7 +34,6 @@ export function SponsorsCard(props: CustomCardProps) {
     range,
     description,
     variant = "bronze",
-    size = "sm",
     className = "",
   } = props;
   return (
@@ -45,7 +41,9 @@ export function SponsorsCard(props: CustomCardProps) {
       className={`${sponsorCardColorClasses[variant]} w-full h-full rounded-4xl ${className}`}
     >
       <div className="flex mx-auto">
-        <h2 className={`${textClasses.title} mt-4 font-black ${sponsorTitleColorClasses[variant]}`}>
+        <h2
+          className={`${textClasses.title} mt-4 font-black ${sponsorTitleColorClasses[variant]}`}
+        >
           {title}
         </h2>
       </div>

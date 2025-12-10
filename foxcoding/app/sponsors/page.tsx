@@ -1,5 +1,4 @@
 import { HeroSection } from "@/components/sections/heroSection";
-import { textClasses } from "../fonts";
 import { SponsorCTA } from "@/components/sections/sponsorCTA";
 import { SponsorTiers } from "@/components/sections/sponsorTiers";
 
