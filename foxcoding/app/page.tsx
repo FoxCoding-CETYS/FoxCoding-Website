@@ -26,7 +26,9 @@ export default function Home() {
           <Hero />
         </div>
       </div>
-      <AboutUs />
+      <div className="z-10">
+        <AboutUs />
+      </div>
 
       <FeaturedProjects />
       <PreviousEvents />

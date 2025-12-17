@@ -235,7 +235,7 @@ const LetterGlitch = ({
     : "bg-white";
 
   return (
-    <div className={`relative w-full h-full ${bgClass} overflow-hidden`}>
+    <div className={`relative w-full min-h-screen ${bgClass} overflow-hidden`}>
       <canvas ref={canvasRef} className="block w-full h-full opacity-30" />
       {outerVignette && mounted && (
         <div
