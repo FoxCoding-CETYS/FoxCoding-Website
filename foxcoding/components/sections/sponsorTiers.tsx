@@ -1,6 +1,7 @@
 import { textClasses } from "@/app/fonts";
 import { SponsorsCard } from "../ui/sponsorCard";
 import ElectricBorder from "../ui/electricBorder";
+import { CustomButton } from "../ui/custom-button";
 
 export function SponsorTiers() {
   return (
@@ -82,6 +83,16 @@ export function SponsorTiers() {
             ]}
           />
         </div>
+      </div>
+      <div className="mb-10 flex justify-center">
+        <CustomButton
+          variant="outline"
+          size="lg"
+          className="mx-auto w-1/5 my-5"
+          onClick={() => window.open("https://www.paypal.me/AnahiHulll")}
+        >
+          Paypal
+        </CustomButton>
       </div>
     </div>
   );
