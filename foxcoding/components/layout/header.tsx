@@ -3,194 +3,130 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import DarkLight from "@/components/ui/darkLight";
-import { firaCode } from "@/app/fonts";
+import { Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { firaCode } from "@/app/fonts";
+import DarkLight from "@/components/ui/darkLight";
+
+const nav = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/sponsors", label: "Sponsors" },
+  { href: "/foxcoders", label: "FoxCoders" },
+];
 
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
-  const nav = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About us" },
-    // { href: "/projects", label: "Projects" },
-    // { href: "/events", label: "Events" },
-    // { href: "/board", label: "Community" },
-    { href: "/sponsors", label: "Sponsors" },
-    { href: "/contact", label: "Contact" },
-  ];
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
-  const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname === href || pathname.startsWith(href + "/");
-  };
-
-  // Close on route change
   useEffect(() => setOpen(false), [pathname]);
 
-  // Close with Esc
   useEffect(() => {
-    const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
+    const closeMenu = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setOpen(false);
     };
-    if (open) window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+    window.addEventListener("keydown", closeMenu);
+    return () => window.removeEventListener("keydown", closeMenu);
+  }, []);
 
   return (
-    <header className="sticky top-0 left-0 right-0 z-50 w-full bg-foreground">
-      {/* Top row: Left (brand) | Center (desktop nav) | Right (toggle + hamburger) */}
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-        {/* Left: brand */}
-        <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/SmallLogo.png"
-            alt="Logo de FoxCoding"
-            width={50}
-            height={50}
-          />
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-brand-dark/95 text-white backdrop-blur-xl">
+      <div className="site-container flex h-[76px] items-center justify-between gap-6">
+        <Link
+          href="/"
+          className="group flex min-w-0 items-center gap-3"
+          aria-label="FoxCoding home"
+        >
+          <span className="size-11">
+            <Image
+              src="/SmallLogo.png"
+              alt=""
+              width={38}
+              height={38}
+              priority
+            />
+          </span>
           <span
-            className={`${firaCode.className} text-accent text-lg font-bold`}
+            className={`${firaCode.className} truncate text-sm font-bold tracking-[-0.03em] sm:text-base`}
           >
-            CETYS FoxCoding Club
+            <span className="text-accent">Fox</span>Coding
+            <span className="hidden text-white/45 sm:inline"> / CETYS</span>
           </span>
         </Link>
 
-        {/* Center: desktop nav */}
-        <nav className="hidden lg:block">
-          <ul className="flex items-center gap-8 text-base">
-            {nav.map((item) => (
-              <li key={item.href}>
-                {item.label === "Contact" ? (
-                  <Link
-                    href="mailto:foxcoding@cetys.edu.mx"
-                    aria-current={isActive(item.href) ? "page" : undefined}
-                    className={[
-                      "transition-colors",
-                      !isActive(item.href) &&
-                        "text-secondary hover:text-accent",
-                      isActive(item.href) && "text-accent font-semibold",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <Link
-                    href={item.href}
-                    aria-current={isActive(item.href) ? "page" : undefined}
-                    className={[
-                      "transition-colors",
-                      !isActive(item.href) &&
-                        "text-secondary hover:text-accent",
-                      isActive(item.href) && "text-accent font-semibold",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
+        <nav
+          className="hidden items-center rounded-full p-1 lg:flex"
+          aria-label="Main navigation"
+        >
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              className={`rounded-full px-5 py-2 text-sm font-semibold transition ${
+                isActive(item.href)
+                  ? "bg-accent text-accent-foreground"
+                  : "text-white/65 hover:text-white"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
-        {/* Right: single DarkLight + hamburger (mobile) */}
         <div className="flex items-center gap-2">
+          <a
+            href="mailto:foxcoding@cetys.edu.mx"
+            className="hidden rounded-full border border-white/15 px-4 py-2 text-sm font-semibold text-white transition hover:border-accent/60 hover:text-accent sm:inline-flex"
+          >
+            Contact
+          </a>
           <DarkLight />
           <button
             type="button"
-            aria-label="Open menu"
+            aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-menu"
-            onClick={() => setOpen((v) => !v)}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-accent lg:hidden"
+            onClick={() => setOpen((current) => !current)}
+            className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 text-white transition hover:border-accent/70 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent lg:hidden"
           >
-            {!open ? (
-              <svg
-                viewBox="0 0 24 24"
-                width="22"
-                height="22"
-                aria-hidden="true"
-              >
-                <path
-                  d="M4 7h16M4 12h16M4 17h16"
-                  stroke="#f7d13b"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            ) : (
-              <svg
-                viewBox="0 0 24 24"
-                width="22"
-                height="22"
-                aria-hidden="true"
-              >
-                <path
-                  d="M6 6l12 12M18 6l-12 12"
-                  stroke="#f7d13b"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                />
-              </svg>
-            )}
+            {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile dropdown (slides down under the header) */}
       <div
         id="mobile-menu"
-        className={[
-          "sticky lg:hidden overflow-hidden border-t border-border bg-foreground backdrop-blur",
-          "transition-[max-height] duration-300 ease-out",
-          open ? "max-h-96" : "max-h-0",
-        ].join(" ")}
-        role="region"
-        aria-label="Mobile navigation"
+        className={`overflow-hidden border-t border-white/10 transition-[max-height,opacity] duration-300 lg:hidden ${
+          open ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+        }`}
       >
-        <nav className="px-4 py-3">
-          <ul className="space-y-2 text-lg">
-            {nav.map((item) => (
-              <li key={item.href}>
-                {item.label === "Contact" ? (
-                  <Link
-                    href="mailto:foxcoding@cetys.edu.mx"
-                    className={[
-                      "block rounded-md px-2 py-2 transition-colors",
-                      !isActive(item.href) &&
-                        "text-secondary hover:bg-accent/10 hover:text-accent",
-                      isActive(item.href) &&
-                        "bg-accent/10 text-accent font-semibold",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                  >
-                    {item.label}
-                  </Link>
-                ) : (
-                  <Link
-                    href={item.href}
-                    className={[
-                      "block rounded-md px-2 py-2 transition-colors",
-                      !isActive(item.href) &&
-                        "text-secondary hover:bg-accent/10 hover:text-accent",
-                      isActive(item.href) &&
-                        "bg-accent/10 text-accent font-semibold",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")}
-                  >
-                    {item.label}
-                  </Link>
-                )}
-              </li>
-            ))}
-          </ul>
+        <nav
+          className="site-container flex flex-col gap-1 py-4"
+          aria-label="Mobile navigation"
+        >
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`rounded-xl px-4 py-3 text-sm font-semibold transition ${
+                isActive(item.href)
+                  ? "bg-accent text-accent-foreground"
+                  : "text-white/70 hover:bg-white/5 hover:text-white"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+          <a
+            href="mailto:foxcoding@cetys.edu.mx"
+            className="rounded-xl px-4 py-3 text-sm font-semibold text-white/70 hover:bg-white/5 hover:text-white"
+          >
+            Contact
+          </a>
         </nav>
       </div>
     </header>

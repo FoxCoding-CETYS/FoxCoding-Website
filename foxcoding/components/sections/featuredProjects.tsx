@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { textClasses } from "@/app/fonts";
 import { ProjectCard } from "@/components/ui/projectsCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -71,9 +70,16 @@ export function FeaturedProjects() {
   };
 
   return (
-    <div className="flex flex-col mx-auto gap-10 md:gap-20 px-6 py-10 md:py-16 w-full md:w-7/8">
-      <h1 className={textClasses.title}>FEATURED PROJECTS</h1>
-      <div className="hidden md:grid md:grid-cols-3 gap-6 items-stretch">
+    <section id="projects" className="section-shell bg-secondary/55">
+      <div className="site-container">
+      <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="eyebrow">Selected work</p>
+          <h2 className="section-heading mt-4">Featured projects</h2>
+        </div>
+        <p className="max-w-md text-sm leading-6 text-muted-foreground sm:text-right">Ideas shaped by experimentation, teamwork, and a desire to solve useful problems.</p>
+      </div>
+      <div className="hidden md:grid md:grid-cols-3 gap-5 items-stretch">
         {items.map((p) => (
           <ProjectCard key={p.title} {...p} />
         ))}
@@ -106,7 +112,7 @@ export function FeaturedProjects() {
             type="button"
             onClick={prev}
             aria-label="Previous project"
-            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-xl text-button border border-border bg-background/80 p-2 backdrop-blur hover:bg-accent/10"
+            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border border-border bg-card/90 p-2 text-foreground shadow-md backdrop-blur hover:border-accent"
           >
             <ChevronLeft className="h-5 w-5" />
           </button>
@@ -114,7 +120,7 @@ export function FeaturedProjects() {
             type="button"
             onClick={next}
             aria-label="Next project"
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-xl text-button border border-border bg-background/80 p-2 backdrop-blur hover:bg-accent/10"
+            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border border-border bg-card/90 p-2 text-foreground shadow-md backdrop-blur hover:border-accent"
           >
             <ChevronRight className="h-5 w-5" />
           </button>
@@ -133,13 +139,7 @@ export function FeaturedProjects() {
           </div>
         </div>
       </div>
-      {/* <CustomButton
-        variant="secondary"
-        size="lg"
-        className="w-1/2 md:w-1/3 mx-auto my-auto"
-      >
-        Learn More
-      </CustomButton> */}
-    </div>
+      </div>
+    </section>
   );
 }
