@@ -1,9 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Card } from "@/components/ui/card";
-import { CustomButton } from "./custom-button";
-import { textClasses } from "@/app/fonts";
+import { Trophy } from "lucide-react";
 
 type Props = {
   title: string;
@@ -12,43 +10,18 @@ type Props = {
   description: string;
 };
 
-export function EventCard({
-  title,
-  imageSrc,
-  imageAlt = `${title} preview`,
-  description,
-}: Props) {
+export function EventCard({ title, imageSrc, imageAlt = `${title} preview`, description }: Props) {
   return (
-    <Card className="rounded-3xl border-border bg-foreground p-3 mb-8 md:mb-2 shadow-lg min-h-full max-h-full md:min-h-[500px]">
-      <div className="mt-4 flex items-center justify-between">
-        <h3 className={`${textClasses.subtitle} font-bold text-accent`}>
-          {title}
-        </h3>
+    <article className="flex h-full min-h-[500px] flex-col overflow-hidden rounded-[1.5rem] border border-border bg-card p-3 shadow-[0_12px_35px_rgba(0,0,0,0.06)]">
+      <div className="relative h-52 overflow-hidden rounded-[1.1rem] bg-muted">
+        <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
+        <div className="absolute left-4 top-4 grid size-9 place-items-center rounded-full bg-accent text-accent-foreground shadow"><Trophy className="size-4" /></div>
       </div>
-
-      <div className="relative overflow-hidden rounded-2xl">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          width={800}
-          height={500}
-          className="h-auto w-full object-cover max-h-[200px]"
-          priority
-        />
+      <div className="flex flex-1 flex-col p-4 pt-5">
+        <h3 className="text-xl font-black leading-tight tracking-[-0.03em] md:text-2xl">{title}</h3>
+        <p className="mt-4 text-sm leading-6 text-muted-foreground">{description.replaceAll("**", "")}</p>
+        <p className="mt-auto pt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-accent">FoxCoding milestone</p>
       </div>
-
-      <p className="mt-2 text-lg md:text-2xl leading-6 text-muted-foreground">
-        {description}
-      </p>
-      <div className="w-1/2 md:w-1/2 mx-auto my-auto bottom-0">
-        <CustomButton
-          variant="outline"
-          size="md"
-          className="mx-auto my-auto mt-4"
-        >
-          View Our Projects
-        </CustomButton>
-      </div>
-    </Card>
+    </article>
   );
 }

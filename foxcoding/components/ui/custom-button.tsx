@@ -5,9 +5,9 @@ import type React from "react";
 import { Button } from "./button";
 
 const buttonColorClasses = {
-  primary: "bgbg-button text-background hover:bg-button/90",
-  secondary: "bg-foreground text-button-text hover:bg-foreground/80",
-  outline: "text-foreground bg-accent hover:bg-accent/80",
+  primary: "bg-foreground text-background hover:opacity-85",
+  secondary: "bg-card border border-border text-foreground hover:border-accent",
+  outline: "bg-accent text-accent-foreground hover:bg-accent/85",
   cta: "bg-black hover:bg-gray-800 text-white",
   bronze: "bg-bronze-button border border-bronze text-white hover:bg-bronze/80",
   silver: "bg-silver-button border border-silver text-white hover:bg-silver/80",
@@ -36,9 +36,9 @@ interface CustomButtonProps {
 }
 
 const sizeClasses = {
-  sm: "px-4 py-2 text-xl md:text-2xl",
-  md: "px-6 sm:px-8 py-2 sm:py-3 text-md md:text-lg font-bold",
-  lg: "px-8 sm:px-12 py-2 sm:py-3 text-xl md:text-2xl",
+  sm: "h-10 px-5 text-sm",
+  md: "h-11 px-6 text-sm",
+  lg: "h-12 px-7 text-base",
 };
 
 export function CustomButton({
@@ -50,7 +50,7 @@ export function CustomButton({
 }: CustomButtonProps) {
   return (
     <Button
-      className={`${buttonColorClasses[variant]} ${sizeClasses[size]} rounded-full font-bold ${className}`}
+      className={`${buttonColorClasses[variant]} ${sizeClasses[size]} rounded-full font-bold shadow-none ${className}`}
       onClick={onClick}
     >
       {children}

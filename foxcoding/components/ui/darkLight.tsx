@@ -1,53 +1,29 @@
-'use client';
-import React from "react";
+"use client";
+
+import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
-import Switch from "react-switch";
-import { MoonIcon } from "@/components/ui/icons/moon";
-import { SunIcon } from "@/components/ui/icons/sun";
+import { useEffect, useState } from "react";
 
 export default function DarkLight() {
-  const { setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const [dark, setDark] = React.useState(true);
-  const [mounted, setMounted] = React.useState(false);
+  useEffect(() => setMounted(true), []);
 
-  // Mount flag
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  // Set theme when `dark` changes (only after mounted)
-  React.useEffect(() => {
-    if (!mounted) return;
-    setTheme(dark ? "dark" : "light");
-  }, [dark, setTheme, mounted]);
+  const isDark = mounted && resolvedTheme === "dark";
 
   return (
-    <div className="text-white flex-col space-y-5">
-      <div>
-        {/* Render the switch only after mount to avoid hydration mismatch */}
-        {mounted && (
-          <Switch
-            checked={dark}
-            onChange={() => setDark(!dark)}
-            offColor="#22c55e"
-            onColor="#afafb2"
-            uncheckedIcon={
-              <div className="flex items-center justify-center h-full text-yellow-400">
-                <SunIcon />
-              </div>
-            }
-            checkedIcon={
-              <div className="flex items-center justify-center h-full text-blue-300">
-                <MoonIcon />
-              </div>
-            }
-            height={28}
-            width={58}
-            handleDiameter={24}
-          />
-        )}
-      </div>
-    </div>
+    <button
+      type="button"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className="inline-flex size-10 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:border-accent/70 hover:bg-accent/10 hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+    >
+      {mounted ? (
+        isDark ? <Sun className="size-[18px]" /> : <Moon className="size-[18px]" />
+      ) : (
+        <span className="size-[18px]" />
+      )}
+    </button>
   );
 }

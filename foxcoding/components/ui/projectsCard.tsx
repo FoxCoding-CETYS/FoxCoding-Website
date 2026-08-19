@@ -2,10 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Github, ExternalLink } from "lucide-react";
-import { textClasses } from "@/app/fonts";
+import { ExternalLink, Github } from "lucide-react";
 
 type Props = {
   title: string;
@@ -27,54 +24,46 @@ export function ProjectCard({
   liveUrl,
 }: Props) {
   return (
-    <Card className="rounded-3xl border-border bg-foreground p-3 shadow-lg min-h-[550px] md:min-h-[500px]">
-      <div className="relative overflow-hidden rounded-2xl">
+    <article className="group flex h-full min-h-[480px] flex-col overflow-hidden rounded-[1.5rem] border border-border bg-card p-3 transition duration-300 hover:-translate-y-1 hover:border-accent/70 hover:shadow-xl">
+      <div className="relative h-56 overflow-hidden rounded-[1.1rem] bg-muted sm:h-64">
         <Image
           src={imageSrc}
           alt={imageAlt}
-          width={800}
-          height={500}
-          className="h-auto w-fit mx-auto object-cover min-h-[320px]"
-          priority
+          fill
+          className="object-contain p-7 transition duration-500 group-hover:scale-105"
         />
-      </div>
-
-      <div className="mt-4 flex items-center justify-between">
-        <h3 className={`${textClasses.subtitle} text-white`}>{title}</h3>
-        <Badge
-          className="rounded-full bg-accent px-3 py-1 text-lg font-bold text-black hover:bg-accent"
-          variant="secondary"
-        >
+        <span className="absolute left-4 top-4 rounded-full border border-white/15 bg-brand-dark/90 px-3 py-1 font-mono text-[10px] font-semibold uppercase tracking-wider text-accent backdrop-blur">
           {status}
-        </Badge>
+        </span>
       </div>
-
-      <p className="mt-2 text-lg md:text-2xl leading-6 text-muted-foreground">
-        {description}
-      </p>
-
-      {(githubUrl || liveUrl) && (
-        <div className="mt-3 flex items-center gap-3">
-          {githubUrl && (
-            <Link
-              href={githubUrl}
-              aria-label="GitHub repository"
-              className="inline-flex h-8 w-8 items-center justify-center rounded-lg hover:bg-accent/10"
-            >
-              <Github className="h-10 w-10 text-accent" />
-            </Link>
-          )}
-          {liveUrl && (
-            <Link
-              href={liveUrl}
-              aria-label="Open live project"
-              className="inline-flex h-8 w-9 items-center justify-center rounded-lg hover:bg-accent/10"
-            >
-              <ExternalLink className="h-10 w-10 text-accent" />
-            </Link>
-          )}
-        </div>
-      )}
-    </Card>
+      <div className="flex flex-1 flex-col p-4 pt-5">
+        <h3 className="text-2xl font-black tracking-[-0.035em]">{title}</h3>
+        <p className="mt-3 text-sm leading-6 text-muted-foreground">
+          {description}
+        </p>
+        {(githubUrl || liveUrl) && (
+          <div className="mt-auto flex items-center gap-2 pt-7">
+            {githubUrl && (
+              <Link
+                href={githubUrl}
+                aria-label={`${title} GitHub repository`}
+                className="grid size-10 place-items-center rounded-full border border-border transition hover:border-accent hover:bg-accent hover:text-accent-foreground"
+              >
+                <Github className="size-[18px]" />
+              </Link>
+            )}
+            {liveUrl && (
+              <Link
+                href={liveUrl}
+                aria-label={`Open ${title}`}
+                className="inline-flex h-10 items-center gap-2 rounded-full border border-border px-4 text-xs font-bold transition hover:border-accent hover:bg-accent hover:text-accent-foreground"
+              >
+                Visit <ExternalLink className="size-4" />
+              </Link>
+            )}
+          </div>
+        )}
+      </div>
+    </article>
   );
 }

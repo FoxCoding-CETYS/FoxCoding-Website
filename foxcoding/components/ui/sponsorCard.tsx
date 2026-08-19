@@ -1,67 +1,38 @@
-"use client";
+import { Check } from "lucide-react";
 
-import { Card } from "@/components/ui/card";
-import { textClasses } from "@/app/fonts";
-
-const sponsorCardColorClasses = {
-  bronze: "bg-bronze-card border border-bronze text-white",
-  silver: "bg-silver-card border border-silver text-white",
-  gold: "bg-gold-card border border-gold text-white",
-  platinum: "bg-platinum-card border border-platinum text-white",
-  techpartner: "bg-techpartner-card border border-techpartner text-white",
+const accents = {
+  bronze: "text-bronze bg-bronze/10 border-bronze/25",
+  silver: "text-silver bg-silver/10 border-silver/25",
+  gold: "text-gold bg-gold/10 border-gold/25",
+  platinum: "text-platinum bg-platinum/10 border-platinum/25",
+  techpartner: "text-techpartner bg-techpartner/10 border-techpartner/25",
 };
 
-// Add this mapping for the title colors
-const sponsorTitleColorClasses = {
-  bronze: "text-bronze",
-  silver: "text-silver",
-  gold: "text-gold",
-  platinum: "text-platinum",
-  techpartner: "text-techpartner",
-};
-
-interface CustomCardProps {
+interface SponsorCardProps {
   title: string;
   range: string;
   description: string[];
-  variant?: "bronze" | "silver" | "gold" | "platinum" | "techpartner";
+  variant?: keyof typeof accents;
+  featured?: boolean;
   className?: string;
 }
 
-export function SponsorsCard(props: CustomCardProps) {
-  const {
-    title,
-    range,
-    description,
-    variant = "bronze",
-    className = "",
-  } = props;
+export function SponsorsCard({ title, range, description, variant = "bronze", featured = false, className = "" }: SponsorCardProps) {
   return (
-    <Card
-      className={`${sponsorCardColorClasses[variant]} w-full h-full rounded-4xl ${className}`}
-    >
-      <div className="flex mx-auto">
-        <h2
-          className={`${textClasses.title} mt-4 font-black ${sponsorTitleColorClasses[variant]}`}
-        >
-          {title}
-        </h2>
+    <article className={`flex h-full flex-col rounded-[1.5rem] border bg-card p-7 shadow-[0_12px_35px_rgba(0,0,0,0.05)] ${featured ? "border-accent ring-4 ring-accent/10" : "border-border"} ${className}`}>
+      <div className="flex items-start justify-between gap-4">
+        <span className={`rounded-full border px-3 py-1 font-mono text-[10px] font-bold tracking-[0.16em] ${accents[variant]}`}>{title}</span>
+        {featured && <span className="font-mono text-[10px] uppercase tracking-wider text-accent">Most impact</span>}
       </div>
-      <div
-        className={` ${textClasses.subtitle} mx-auto text-primary font-black text-center`}
-      >
-        <h3>{range}</h3>
-      </div>
-
-      <div className="mx-auto">
-        <ul className="mx-auto text-md md:text-lg w-8/12 leading-6 font-medium text-primary list-disc">
-          {description.map((item, idx) => (
-            <li className="mb-2" key={`${item}-${idx}`}>
-              {item}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </Card>
+      <h3 className="mt-8 text-3xl font-black tracking-[-0.045em]">{range}</h3>
+      <div className="my-6 h-px bg-border" />
+      <ul className="space-y-4">
+        {description.map((item) => (
+          <li key={item} className="flex gap-3 text-sm leading-6 text-muted-foreground">
+            <Check className={`mt-1 size-4 shrink-0 ${accents[variant].split(" ")[0]}`} /> {item}
+          </li>
+        ))}
+      </ul>
+    </article>
   );
 }
