@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, UserRound } from "lucide-react";
 import { getContributors } from "@/lib/get-contributors";
 import { HeroSection } from "@/components/sections/heroSection";
+import { CustomButton } from "@/components/ui/custom-button";
 
 export default async function ContributorsPage() {
   const contributors = await getContributors("public/contributors");
@@ -16,6 +17,19 @@ export default async function ContributorsPage() {
               Not just a team. A family of builders.
             </h2>
           </div>
+          <Link
+            href="https://github.com/FoxCoding-CETYS/FoxCoding-Website"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <CustomButton
+              variant="outline"
+              size="lg"
+              className="w-1/2 mx-auto mt-4 mb-12"
+            >
+              Add your card!
+            </CustomButton>
+          </Link>
           <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
             {contributors.map((contributor) => (
               <article
