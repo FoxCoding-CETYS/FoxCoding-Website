@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Foxcoding profile for Ruben Yañez Hernandez, software engineer and Computer Science student at CETYS University.">
+    <meta name="theme-color" content="#090807">
+
+    <title>Rubén Yáñez | FoxCoding</title>
+
+    <style>
+        :root {
+            --background: #080706;
+            --surface: rgba(20, 17, 14, 0.88);
+            --surface-light: rgba(255, 255, 255, 0.055);
+            --border: rgba(255, 255, 255, 0.10);
+            --text: #fffaf3;
+            --muted: #b8afa4;
+            --orange: #ffd45a;
+            --orange-light: #ffe680;
+            --yellow: #ffd45a;
+            --radius: 32px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            color-scheme: dark;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            overflow-x: hidden;
+            padding: 40px 20px;
+            background:
+                radial-gradient(circle at 12% 16%, rgba(255, 122, 26, 0.18), transparent 27rem),
+                radial-gradient(circle at 88% 84%, rgba(255, 212, 90, 0.10), transparent 25rem),
+                var(--background);
+            color: var(--text);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            opacity: 0.22;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+            background-size: 54px 54px;
+            mask-image: linear-gradient(to bottom, black, transparent 86%);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .profile-card {
+            position: relative;
+            width: min(1060px, 100%);
+            display: grid;
+            grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.45fr);
+            gap: 12px;
+            padding: 12px;
+            overflow: hidden;
+            isolation: isolate;
+            border: 1px solid var(--border);
+            border-radius: calc(var(--radius) + 4px);
+            background: rgba(10, 9, 8, 0.78);
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 0.58),
+                inset 0 1px 0 rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(24px);
+            transition: transform 180ms ease-out;
+        }
+
+        .profile-card::after {
+            content: "";
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            right: -190px;
+            top: -200px;
+            z-index: -1;
+            border-radius: 50%;
+            background: var(--orange);
+            filter: blur(120px);
+            opacity: 0.13;
+        }
+
+        .visual-panel,
+        .content-panel {
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .visual-panel {
+            position: relative;
+            min-height: 590px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: 28px;
+            background:
+                linear-gradient(155deg, rgba(255, 184, 93, 0.16), transparent 48%),
+                linear-gradient(180deg, #20150d 0%, #100d0a 100%);
+        }
+
+        .visual-panel::before {
+            content: "";
+            position: absolute;
+            width: 390px;
+            height: 390px;
+            left: 50%;
+            top: 46%;
+            border: 1px solid rgba(255, 180, 95, 0.14);
+            border-radius: 45% 55% 67% 33% / 51% 44% 56% 49%;
+            transform: translate(-50%, -50%) rotate(18deg);
+        }
+
+        .brand {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+        }
+
+        .wordmark {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.74rem;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+        }
+
+        .fox-mark {
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 11px;
+            background: linear-gradient(135deg, var(--orange), var(--yellow));
+            color: #150b03;
+            box-shadow: 0 10px 28px rgba(255, 122, 26, 0.25);
+        }
+
+        .fox-mark svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .availability {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #8cff82;
+            box-shadow: 0 0 0 5px rgba(140, 255, 130, 0.10), 0 0 18px rgba(140, 255, 130, 0.65);
+        }
+
+        .portrait-wrap {
+            position: relative;
+            z-index: 1;
+            width: min(280px, 88%);
+            aspect-ratio: 1;
+            margin: 42px auto 32px;
+            padding: 5px;
+            border-radius: 38% 62% 58% 42% / 44% 36% 64% 56%;
+            background: linear-gradient(140deg, var(--orange-light), var(--orange) 44%, #7b2800);
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.42), 0 0 60px rgba(255, 122, 26, 0.14);
+            transform: rotate(-2deg);
+        }
+
+        .portrait-wrap::before,
+        .portrait-wrap::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            border: 1px solid rgba(255, 180, 95, 0.30);
+            border-radius: inherit;
+        }
+
+        .portrait-wrap::before {
+            inset: -14px 12px 10px -12px;
+        }
+
+        .portrait-wrap::after {
+            inset: 13px -15px -13px 14px;
+        }
+
+        .portrait {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: inherit;
+            filter: saturate(0.92) contrast(1.04);
+            transform: rotate(2deg);
+        }
+
+        .terminal {
+            position: relative;
+            z-index: 1;
+            padding: 16px 17px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            background: rgba(0, 0, 0, 0.35);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+            color: #d8cec3;
+            font: 500 0.76rem/1.65 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+        }
+
+        .terminal .prompt {
+            color: var(--orange-light);
+        }
+
+        .terminal .value {
+            color: #fff7ec;
+        }
+
+        .content-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: clamp(32px, 6vw, 64px);
+            background:
+                linear-gradient(150deg, rgba(255, 255, 255, 0.04), transparent 36%),
+                var(--surface);
+        }
+
+        .eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 0 0 22px;
+            color: var(--orange-light);
+            font-size: 0.73rem;
+            font-weight: 800;
+            letter-spacing: 0.17em;
+            text-transform: uppercase;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 34px;
+            height: 1px;
+            background: currentColor;
+        }
+
+        h1 {
+            max-width: 680px;
+            margin: 0;
+            font-size: clamp(2.7rem, 6vw, 5.15rem);
+            line-height: 0.92;
+            letter-spacing: -0.065em;
+        }
+
+        h1 span {
+            display: block;
+            color: transparent;
+            background: linear-gradient(90deg, var(--orange-light), var(--yellow));
+            background-clip: text;
+            -webkit-background-clip: text;
+        }
+
+        .headline {
+            max-width: 660px;
+            margin: 27px 0 13px;
+            color: #f4eee7;
+            font-size: clamp(1.12rem, 2vw, 1.4rem);
+            font-weight: 650;
+            line-height: 1.45;
+            letter-spacing: -0.02em;
+        }
+
+        .bio {
+            max-width: 650px;
+            margin: 0;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.75;
+        }
+
+        .focus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 29px 0 24px;
+        }
+
+        .focus-item {
+            min-height: 112px;
+            padding: 17px;
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            background: var(--surface-light);
+            transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+        }
+
+        .focus-item:hover {
+            border-color: rgba(255, 154, 71, 0.40);
+            background: rgba(255, 122, 26, 0.08);
+            transform: translateY(-3px);
+        }
+
+        .focus-label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--orange-light);
+            font: 800 0.65rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+            letter-spacing: 0.14em;
+        }
+
+        .focus-item p {
+            margin: 0;
+            color: #d4cbc1;
+            font-size: 0.82rem;
+            line-height: 1.48;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .tech {
+            padding: 7px 11px;
+            border: 1px solid rgba(255, 255, 255, 0.09);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.035);
+            color: #cfc5bb;
+            font: 650 0.71rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 11px;
+        }
+
+        .button {
+            min-height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0 18px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 750;
+            transition: transform 180ms ease, border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+        }
+
+        .button svg {
+            width: 19px;
+            height: 19px;
+            flex: 0 0 auto;
+        }
+
+        .button-primary {
+            border-color: transparent;
+            background: linear-gradient(135deg, var(--orange), #ff9a31);
+            color: #1b0d03;
+            box-shadow: 0 12px 30px rgba(255, 122, 26, 0.22);
+        }
+
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: #fff9f2;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+        }
+
+        .button-primary:hover {
+            box-shadow: 0 16px 34px rgba(255, 122, 26, 0.32);
+        }
+
+        .button-secondary:hover {
+            border-color: rgba(255, 180, 95, 0.35);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .button:focus-visible {
+            outline: 3px solid rgba(255, 180, 95, 0.52);
+            outline-offset: 4px;
+        }
+
+        .signature {
+            margin: 24px 0 0;
+            color: #7f766d;
+            font: 500 0.72rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+            letter-spacing: 0.06em;
+        }
+
+        @media (max-width: 820px) {
+            body {
+                display: block;
+                padding: 18px;
+            }
+
+            .profile-card {
+                grid-template-columns: 1fr;
+            }
+
+            .visual-panel {
+                min-height: auto;
+            }
+
+            .portrait-wrap {
+                width: min(280px, 74vw);
+                margin-block: 54px 50px;
+            }
+
+            .terminal {
+                max-width: 480px;
+                width: 100%;
+                margin-inline: auto;
+            }
+
+            .content-panel {
+                padding: 42px 28px;
+            }
+
+            h1 {
+                font-size: clamp(3rem, 15vw, 5rem);
+            }
+        }
+
+        @media (max-width: 560px) {
+            :root {
+                --radius: 24px;
+            }
+
+            body {
+                padding: 10px;
+            }
+
+            .profile-card {
+                padding: 7px;
+                gap: 7px;
+            }
+
+            .visual-panel,
+            .content-panel {
+                padding: 24px;
+            }
+
+            .availability {
+                display: none;
+            }
+
+            .portrait-wrap {
+                margin-block: 42px;
+            }
+
+            .focus-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .focus-item {
+                min-height: 0;
+            }
+
+            .actions {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="profile-card" id="profile-card">
+        <section class="visual-panel" aria-label="Profile portrait">
+            <div class="brand">
+                <div class="wordmark">
+                    <span class="fox-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M4 5.5 8.3 8 12 6.7 15.7 8 20 5.5l-1 8.2L12 19l-7-5.3-1-8.2Z" fill="currentColor"/>
+                            <path d="m8 8-1.3 4.4L12 17l5.3-4.6L16 8l-4 2-4-2Z" fill="#ffcf58"/>
+                            <path d="m9 12 3 5 3-5-3 1-3-1Z" fill="#1b0d03"/>
+                        </svg>
+                    </span>
+                    FOXCODING
+                </div>
+                <span class="availability" title="Building, learning and competing" aria-label="Building, learning and competing"></span>
+            </div>
+
+            <div class="portrait-wrap">
+                <img
+                    class="portrait"
+                    src="https://avatars.githubusercontent.com/u/180044789?v=4"
+                    alt="Portrait of Ruben Yañez Hernandez"
+                    loading="eager"
+                    decoding="async"
+                >
+            </div>
+
+            <div class="terminal" aria-label="Quick profile summary">
+                <div><span class="prompt">ruben@foxcoding</span>:<span class="value">~</span>$ whoami</div>
+                <div><span class="value">software engineer · problem solver · builder</span></div>
+            </div>
+        </section>
+
+        <section class="content-panel">
+            <p class="eyebrow">Member profile · CETYS University</p>
+
+            <h1>Rubén Yáñez <span>Hernández.</span></h1>
+
+            <p class="headline">
+                Software engineer turning ambitious ideas into products people can actually use.
+            </p>
+
+            <p class="bio">
+                I'm a Computer Science student at CETYS University who enjoys working across the stack—from polished interfaces to APIs and backend systems. I also explore computer vision and sharpen my problem-solving through competitive programming.
+            </p>
+
+            <div class="focus-grid" aria-label="Areas of focus">
+                <article class="focus-item">
+                    <span class="focus-label">01 / BUILD</span>
+                    <p>Full-stack products and thoughtful user experiences.</p>
+                </article>
+                <article class="focus-item">
+                    <span class="focus-label">02 / SOLVE</span>
+                    <p>Algorithms, APIs and reliable backend systems.</p>
+                </article>
+                <article class="focus-item">
+                    <span class="focus-label">03 / EXPLORE</span>
+                    <p>Computer vision and technologies worth learning.</p>
+                </article>
+            </div>
+
+            <div class="tech-stack" aria-label="Technology stack">
+                <span class="tech">TypeScript</span>
+                <span class="tech">Next.js</span>
+                <span class="tech">Python</span>
+                <span class="tech">C++</span>
+                <span class="tech">Go</span>
+                <span class="tech">Supabase</span>
+            </div>
+
+            <div class="actions">
+                <a
+                    class="button button-primary"
+                    href="https://www.linkedin.com/in/ruben-yanez-hernandez-a24a23305/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Connect with Rubén on LinkedIn"
+                >
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V8.98h3.42v1.57h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29ZM5.32 7.41a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.1 20.45H3.54V8.98H7.1v11.47ZM22.23 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.46c.98 0 1.77-.77 1.77-1.72V1.72C24 .77 23.21 0 22.23 0Z"/>
+                    </svg>
+                    Connect on LinkedIn
+                </a>
+
+                <a
+                    class="button button-secondary"
+                    href="https://github.com/rubenyh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="See Rubén's projects on GitHub"
+                >
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 .5A12 12 0 0 0 8.2 23.88c.6.11.82-.26.82-.58v-2.1c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.34-1.76-1.34-1.76-1.09-.75.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.84 2.81 1.31 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.34-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23A11.5 11.5 0 0 1 12 6.42c1.02 0 2.04.14 3 .4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.62-5.48 5.92.43.37.81 1.1.81 2.22v3.17c0 .32.22.69.83.57A12 12 0 0 0 12 .5Z"/>
+                    </svg>
+                    Explore my GitHub
+                </a>
+            </div>
+
+            <p class="signature">// curious by default · always building</p>
+        </section>
+    </main>
+
+    <script>
+        const card = document.querySelector('#profile-card');
+        const canHover = window.matchMedia('(hover: hover)').matches;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (canHover && !reduceMotion) {
+            card.addEventListener('pointermove', (event) => {
+                const bounds = card.getBoundingClientRect();
+                const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+                const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+
+                card.style.transform = `perspective(1400px) rotateX(${-y * 2}deg) rotateY(${x * 2}deg)`;
+            });
+
+            card.addEventListener('pointerleave', () => {
+                card.style.transform = '';
+            });
+        }
+    </script>
+</body>
+</html>
